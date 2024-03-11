@@ -13,3 +13,10 @@ class NotionDB:
                    "Notion-Version": self.NOTION_VERSION}
         response = requests.get(f"{self.NOTION_ENDPOINT_DB}/{self.database_id}",
                                 headers=headers)
+
+    def create_database(self, body: dict):
+        headers = {"Authorization": f"Bearer {self.bearer_token}",
+                   "Notion-Version": self.NOTION_VERSION,
+                   "Content-Type": "application/json"}
+        response = requests.get(f"{self.NOTION_ENDPOINT_DB}",
+                                headers=headers, data=body)
